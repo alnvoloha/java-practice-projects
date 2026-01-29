@@ -40,10 +40,4 @@ mvn package
 
 Some folders are plain Java (no Maven). Open the folder and run the `main` class from your IDE.
 
-## Clean repo hygiene
-This repository intentionally does **not** include build artifacts.
-Make sure you don’t commit:
-- `target/`, `out/`, `.idea/`, `.classpath/`, `.project/`
-- `*.class`, `*.log`
 
-A root `.gitignore` is included.
