@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %c{1} - %msg%n" />
+        </Console>
+
+        <RollingFile name="FileLogger" fileName="logs/current.log"
+                     filePattern="logs/old_logs/log-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+
+        <File name="ErrorLogger" fileName="logs/errors.log">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n</Pattern>
+            </PatternLayout>
+        </File>
+
+        <File name="ReportLogger" fileName="logs/report.log">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n</Pattern>
+            </PatternLayout>
+        </File>
+
+    </Appenders>
+
+    <Loggers>
+        <Logger name="company.parse" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLogger"/>
+            <AppenderRef ref="ErrorLogger"/>
+        </Logger>
+        <Logger name="company.util.TaxReportGenerator" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ReportLogger"/>
+        </Logger>
+
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLogger"/>
+        </Root>
+    </Loggers>
+</Configuration>

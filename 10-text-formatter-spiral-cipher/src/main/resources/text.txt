@@ -1,0 +1,6 @@
+Java is a high-level programming language.
+Streams provide functional-style operations.
+Encryption is fun!
+This task checks string and stream logic.
+Welcome to regular expressions practice!
+
